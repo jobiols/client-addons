@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+
+<!-- Cria ação de Menu Coberturas  -->
+<record id="coberturas_seguros_action" model="ir.actions.act_window">
+        <field name="name">Coberturas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new cobertura.
+            </p>
+        </field>
+    </record>
+
+  <!-- adicona campos a lista da Coberturas -->
+    <record id="coberturas_tree_view" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name='acc_enfer'/>
+                <field name='preex'/>
+                <field name='min_dias'/>
+                <field name='max_dias'/>
+                <field name='limte_edad'/>
+                <field name="incremen"/>
+                <field name="ref_edad"/>
+                <field name="precio_per_dia"/>
+                <field name="costo_neto"/>
+                <field name="plano_destaque"/>
+            </tree>    
+        </field>
+    </record>
+
+<!-- cria list view coberutras-->
+    <record model="ir.ui.view" id="coberturas_tree_view">
+        <field name="model">product.template</field>
+        <field name="view_type">form</field>
+        <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name='acc_enfer'/>
+                    <field name='preex'/>
+                    <field name='min_dias'/>
+                    <field name='max_dias'/>
+                    <field name='limte_edad'/>
+                    <field name="incremen"/>
+                    <field name="ref_edad"/>
+                    <field name="precio_per_dia"/>
+                    <field name="costo_neto"/>
+                    <field name="plano_destaque"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- Adiciona campos para form view -->
+    <record id="coberturas_product_template_form_view" model="ir.ui.view">
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <field name="default_code" position="after">
+                <field name="name"/>
+                <field name='acc_enfer'/>
+                <field name='preex'/>
+                <field name='min_dias'/>
+                <field name='max_dias'/>
+                <field name='limte_edad'/>
+                <field name="incremen"/>
+                <field name="ref_edad"/>
+                <field name="precio_per_dia"/>
+                <field name="costo_neto"/>
+                <field name="plano_destaque"/>
+            </field>
+        </field>
+    </record>
+
+
+<!-- cria menu lateral Meal  -->
+    <menuitem action="coberturas_seguros_action" 
+    id="menu_coberturas" parent="sale.product_menu_catalog" sequence="10"/>
+    
+    </data>
+</odoo>

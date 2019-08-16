@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+<!-- Cria ação de Menu Diet Items -->
+<record id="product.product_template_action_seg" model="ir.actions.act_window">
+        <field name="name">Cadastra Lead</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.lead2opportunity.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="view_crm_lead2opportunity_partner"/>
+        <!-- <field name="context">{"search_default_filter_to_sell":1}</field>
+        <field name="domain">[('categ_id.name','=','Diet Items')]</field> -->
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new product.
+            </p><p>
+                You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to customers.
+            </p><p>
+                The product form contains information to simplify the sale process: price, notes in the quotation, accounting data, procurement methods, etc.
+            </p>
+        </field>
+    </record>
+
+
+<!-- cria menu lateral Diet Item  -->
+    <menuitem action="product.product_template_action_seg" 
+    id="menu_product_template_action_seg" 
+    parent="sale.product_menu_catalog" sequence="4"/>
+    </data>
+ </odoo>   

@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+
+<!-- Cria ação de Menu Coberturas  -->
+<record model="ir.ui.view" id="test_base_tree_inheirt">
+    <field name="name">test.base.tree</field>
+    <field name="model">test.base</field>
+    <field name="type">tree</field>
+    <field name="inherit_id" ref="<base_module_name>.test_base_tree"/>
+    <field name="arch" type="xml">
+        <field name="email" position="after">
+            <field name="dept"/>
+        </field>
+    </field>
+</record>
+
+
+    <!-- data_ida = fields.Datetime(string="Data de Ida",)
+    data_volta = fields.Datetime(string="Data da volta",)
+    num_pasageiros = fields.Integer(string="Número de Passageiros",)
+    num_menores = fields.Integer(string="Menores de idade",)
+    num_idosos = fields.Integer(string="Idosos",)
+    esportes =  fields.Boolean(string="Praticará esportes?",)
+    moto =  fields.Boolean(string="Utilizará motocicleta?",)
+    total_dias = fields.Integer(string="Total de Dias", store=True, compute="calcula_dias",) -->
+  <!-- adicona campos a lista da Coberturas -->
+    <record id="consulta_tree_view" model="ir.ui.view">
+        <field name="model">info.consulta</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="data_ida"/>
+                <field name='data_volta'/>
+                <field name='num_pasageiros'/>
+                <field name='num_menores'/>
+                <field name='num_idosos'/>
+                <field name='esportes'/>
+                <field name="moto"/>
+                <field name="total_dias"/>
+            </tree>    
+        </field>
+    </record>
+
+<!-- cria list view coberutras-->
+    <record model="ir.ui.view" id="consulta_tree_view">
+        <field name="model">info.consulta</field>
+        <field name="view_type">form</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="data_ida"/>
+                <field name='data_volta'/>
+                <field name='num_pasageiros'/>
+                <field name='num_menores'/>
+                <field name='num_idosos'/>
+                <field name='esportes'/>
+                <field name="moto"/>
+                <field name="total_dias"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- Adiciona campos para form view -->
+    <record id="consulta_template_form_view" model="ir.ui.view">
+        <field name="model">info.consulta</field>
+        <field name="arch" type="xml">
+                <field name="data_ida"/>
+                <field name='data_volta'/>
+                <field name='num_pasageiros'/>
+                <field name='num_menores'/>
+                <field name='num_idosos'/>
+                <field name='esportes'/>
+                <field name="moto"/>
+                <field name="total_dias"/>
+        </field>
+    </record>
+
+
+<!-- cria menu lateral Meal  -->
+    <menuitem action="consulta_seguros_action" 
+    id="menu_coberturas" parent="sale.product_menu_catalog" sequence="10"/>
+    
+    </data>
+</odoo>

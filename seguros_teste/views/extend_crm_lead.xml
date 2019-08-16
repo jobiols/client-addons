@@ -1,0 +1,36 @@
+
+<odoo>
+    <record id="test_crm_lead" model="ir.ui.view">
+        <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+               <header>
+                    <button name="action_apply" string="Chama Classe" type="object" class="btn-primary"/>
+                </header>
+        </field>
+    </record>
+</odoo>
+
+<!-- <odoo>
+    <record id="test_crm_lead" model="ir.ui.view">
+        <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+        <field name="model">crm.lead2opportunity.partner</field>
+        <field name="arch" type="xml">
+               <header>
+                    <button name="action_apply" string="Chama Classe" type="object" class="btn-primary"/>
+                </header>
+        </field>
+    </record>
+</odoo> -->
+
+<!-- <odoo>
+    <record id="test_crm_lead" model="ir.ui.view">
+        <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+        <field name="model">test.chamada</field>
+        <field name="arch" type="xml">
+               <header>
+                    <button name="test_chamada" string="Chama Classe" type="object" class="btn-primary"/>
+                </header>
+        </field>
+    </record>
+</odoo> -->

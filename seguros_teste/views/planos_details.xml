@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+    <template id="planos_details" name="Planos Details">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Planos Detail</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Acc.y.Enfer</th>
+                        <th scope="col">Preex</th>
+                        <th scope="col">Min.Días</th>
+                        <th scope="col">Max.Días</th>
+                        <th scope="col">Limit Edad</th>
+                        <th scope="col">Increm.50%</th>
+                        <th scope="col">precio venta x dia</th>
+                        <th scope="col">Costo Neto</th>
+                    </tr>
+                </thead>
+                <t t-foreach="plano" t-as="item">
+                    <tbody>
+                        <tr>
+                            <td><t t-esc="item.name"/></td>
+                            <td><t t-esc="item._acc_enfer"/></td>
+                            <td><t t-esc="item._preex"/></td>
+                            <td><t t-esc="item._min_dias"/></td>
+                            <td><t t-esc="item._max_dias"/></td>
+                            <td><t t-esc="item._limte_edad"/></td>
+                            <td><t t-esc="item._incremen"/></td>
+                            <td><t t-esc="item._precio_per_dia"/></td>
+                            <td><t t-esc="item._costo_neto"/></td>
+                        </tr>
+                    </tbody>
+                </t>
+            </table>
+            </div>         
+        </t>
+    </template>
+    </data>
+</odoo>
