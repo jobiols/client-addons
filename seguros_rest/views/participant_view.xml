@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_participant_tree" model="ir.ui.view">
+
+        <field name="name">SEGUROS TEST participant tree view</field>
+        <field name="model">seguros_rest.participant</field>
+        <field name="arch" type="xml">
+            <tree string="Participants" editable="top">
+                <field name="name"/>
+                <field name="document"/>
+                <field name="email"/>
+                <field name="birth_date"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

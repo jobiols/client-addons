@@ -1,7 +1,14 @@
 {
     'name': "Seguros Teste Oficial",
     'version': '1.0',
-    'depends': ['website','website_form', 'website_partner', 'crm'],
+    'depends': [
+            'website',
+            'website_form',
+            'website_partner',
+            'crm',
+            'product',
+            'sale'
+    ],
     'data': [
         'views/seguros_view.xml',
         'data/data.xml',
@@ -12,7 +19,5 @@
     'description': """
     Description text
     """,
-    'installable' : True,
+    'installable': True,
 }
-
-#'security/ir.model.access.csv'

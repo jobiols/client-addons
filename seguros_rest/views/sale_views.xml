@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">SEGUROS TEST add button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- agregar boton simular venta -->
+            <xpath expr="//button[@name='action_unlock']" position="after">
+                <button name="simulate_quote"
+                        type="object"
+                        string="Simulate Quote"
+                        states="draft"/>
+            </xpath>
+
+            <!-- agregar oreja participantes -->
+            <xpath expr="//page[2]" position="after">
+                <page string="Participants" name="participants">
+                    <field name="participant_ids">
+                    </field>
+                </page>
+            </xpath>
+
+            <!-- agregar campos extra -->
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="departure_date"/>
+                <field name="return_date"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <field name="category"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

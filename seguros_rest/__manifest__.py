@@ -27,11 +27,15 @@
     'website': 'http://github.com/jobiols/client=addons',
     'license': 'AGPL-3',
     'depends': [
-        'seguros_teste'
+        'base_rest',
+        'seguros_teste',
+        'sale_management',
     ],
     'data': [
         'security/ir.model.access.csv',
-        'security/res_groups.xml'
+        'security/res_groups.xml',
+        'views/sale_views.xml',
+        'views/participant_view.xml'
     ],
     'demo': [
 
