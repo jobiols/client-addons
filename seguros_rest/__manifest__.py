@@ -19,23 +19,24 @@
 ##############################################################################
 
 {
-    'name': 'Module Name',
+    'name': 'Seguros REST',
     'version': '11.0.0.0.0',
     'category': 'Tools',
-    'summary': "Module summary",
+    'summary': "Cotizador de seguros",
     'author': "jeo Software",
-    'website': 'http://github.com/jobiols/module-repo',
+    'website': 'http://github.com/jobiols/client=addons',
     'license': 'AGPL-3',
     'depends': [
+        'seguros_teste'
     ],
     'data': [
         'security/ir.model.access.csv',
         'security/res_groups.xml'
     ],
     'demo': [
-        'data/data.xml'
+
     ],
-    'installable': False,
+    'installable': True,
     'auto_install': False,
     'application': False,
 }
