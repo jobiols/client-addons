@@ -1,2 +1,3 @@
-# For copyright and license notices, see __manifest__.py file in module root
-from . import test_module
+from . import test_controller
+from . import test_openapi
+from . import test_exception
