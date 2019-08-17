@@ -12,20 +12,18 @@ class SaleOrder(models.Model):
 
     participant_ids = fields.One2many(
         'seguros_rest.participant',
-        'sale_order_id'
+        'sale_order_id',
+        help="Travellers"
     )
-    category = fields.Selection([
-        ('general', 'Generals'),
-        ('annuities', 'Annuities'),
-        ('sports', 'Sports'),
-        ('general', 'Generals'),
-        ('long_stay', 'Long Stay'),
-    ])
+    category_id = fields.Many2one(
+        'product.category',
+        help="Product Category"
+    )
     departure_date = fields.Date(
-
+        help="Trip start date"
     )
     return_date = fields.Date(
-
+        help="Trip end date"
     )
 
     def simulate_quote(self):
@@ -49,7 +47,7 @@ class SaleOrder(models.Model):
         return relativedelta.relativedelta(t_date, b_date).years
 
     def select_products(self, birth_dates, departure_date, return_date,
-        category):
+        category_id):
         """
         birth_dates: lista de fechas de nacimiento de los participantes
         departure_date: Fecha de inicio del viaje
@@ -60,7 +58,7 @@ class SaleOrder(models.Model):
         cliente y los deja cargados en el presupuesto con el precio calculado.
         """
 
-        # obtener la fecha mas antigua de nacimiento
+        # obtener la fecha mas antigua de nacimiento de los participantes.
         birth_dates.sort()
         agest_birth_date = birth_dates[0]
 
@@ -72,15 +70,25 @@ class SaleOrder(models.Model):
         # obtener la edad del viajero mas viejo al dia de la fecha de regreso
         oldest_age = self.get_age(agest_birth_date, return_date)
 
-        # buscar en product.template
+        # buscar en product.template los productos a ofrecer para este conjunto
+        # de participantes
         prod_tmpl = self.env['product.template']
-        domain = [('categ_id.name', '!=', category),
-                  ('plano_destaque', '>', 0),
-                  ('limte_edad', '>=', oldest_age)]
+        domain = [
+            # Traer productos de esta categoria
+            ('categ_id', '=', category_id),
+
+            # Traer productos con destaque mayor que cero
+            ('plano_destaque', '>', 0),
+
+            # Traer productos si la edad limite del producto no es superado por
+            # alguno de los participantes hasta la fecha de regreso inclusive
+            ('limte_edad', '>=', oldest_age)
+        ]
 
         products = prod_tmpl.search(domain)
         if not products:
-            raise Warning('No products found to offer')
+            raise Warning(_('No products found to offer'))
+
         price = 0
 
         # procesar y salvar los productos en la SO
@@ -91,15 +99,30 @@ class SaleOrder(models.Model):
                 age = self.get_age(birth, return_date)
 
                 # determino si hay que incrementar el precio
-                if not product.limte_edad or age < product.limte_edad:
+
+                # si el producto tiene incremen en false o tiene limite de edad
+                # en False no se incrementa
+                if not product.increment or not product.limte_edad:
                     price += product.lst_price
+
+                # si la edad del pasajero a la fecha del regreso es menor o
+                # igual a la fecha de referencia, no se incrementa
+                elif age < product.limte_edad:
+                    price += product.lst_price
+
+                # no cumple las anteriores, el pasajero tiene edad mayor que
+                # la limite y tiene marcado incremento entonces se incrementa
                 else:
                     price += product.lst_price * 1.5
+
+                # ya tenemos el precio por dia ahora multiplicamos por la
+                # cantidad de dias del viaje
+                price *= travel_days
 
             vals = {
                 'order_id': self.id,
                 'product_id': product.id,
                 'price_unit': price
             }
-            # crear la linea de presupuesto
+            # Crea la linea de presupuesto con este producto
             self.order_line.create(vals)
