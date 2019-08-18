@@ -27,7 +27,6 @@ class TestException(HttpCase, RegistryMixin):
 
     @odoo.tools.mute_logger('odoo.addons.base_rest.http')
     def test_user_error(self):
-
         response = self.url_open('%s/user_error' % self.url, "{}")
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.headers['content-type'], 'application/json')

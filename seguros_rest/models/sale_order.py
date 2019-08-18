@@ -47,7 +47,7 @@ class SaleOrder(models.Model):
         return relativedelta.relativedelta(t_date, b_date).years
 
     def select_products(self, birth_dates, departure_date, return_date,
-        category_id):
+        category_id, throw_exceptions=True):
         """
         birth_dates: lista de fechas de nacimiento de los participantes
         departure_date: Fecha de inicio del viaje
@@ -87,13 +87,15 @@ class SaleOrder(models.Model):
 
         products = prod_tmpl.search(domain)
         if not products:
-            raise Warning(_('No products found to offer'))
-
-        price = 0
+            if throw_exceptions:
+                raise Warning(_('No products found to offer'))
+            else:
+                return self
 
         # procesar y salvar los productos en la SO
         for product in products:
 
+            price = 0
             for birth in birth_dates:
                 # edad del pasajero a la fecha de regreso
                 age = self.get_age(birth, return_date)
@@ -102,7 +104,7 @@ class SaleOrder(models.Model):
 
                 # si el producto tiene incremen en false o tiene limite de edad
                 # en False no se incrementa
-                if not product.increment or not product.limte_edad:
+                if not product.incremen or not product.limte_edad:
                     price += product.lst_price
 
                 # si la edad del pasajero a la fecha del regreso es menor o
@@ -126,3 +128,5 @@ class SaleOrder(models.Model):
             }
             # Crea la linea de presupuesto con este producto
             self.order_line.create(vals)
+
+        return self

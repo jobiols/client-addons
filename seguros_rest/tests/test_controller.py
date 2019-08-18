@@ -64,8 +64,6 @@ class TestController(CommonCase):
         # at the end of the start process, our tow controllers must into the
         # controller registered
 
-        import wdb;wdb.set_trace()
-
         controllers = controllers_per_module['seguros_rest']
         self.assertEqual(len(controllers), 2)
 

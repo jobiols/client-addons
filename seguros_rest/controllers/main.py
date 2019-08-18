@@ -7,4 +7,4 @@ from odoo.addons.base_rest.controllers import main
 class BaseRestSeguroApiController(main.RestController):
     _root_path = '/insurance/v1/'
     _collection_name = 'base.rest.insurance.services'
-    _default_auth = 'user'
+    _default_auth = 'api_key'
