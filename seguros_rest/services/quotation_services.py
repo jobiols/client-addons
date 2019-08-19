@@ -193,9 +193,6 @@ class QuotationService(Component):
             if sol.product_id.description:
                 prod['long_description'] = sol.product_id.description
             res['products'].append(prod)
-        print('---------------------')
-        print(res)
-        print('---------------------')
         return res
 
     @staticmethod
