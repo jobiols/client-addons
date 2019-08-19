@@ -17,10 +17,10 @@ class AuthApiKey(models.TransientModel):
         if not self.env.user.has_group("base.group_system"):
             raise AccessError(_("User is not allowed"))
 
-        if not consteq(api_key, config.get('rest_api_key')):
+        if not consteq(api_key, config.get('rest_api_key','1234567890')):
             return False
 
-        login_name = config.get('rest_api_user')
+        login_name = config.get('rest_api_user','admin')
         uid = self.env["res.users"].search([("login", "=", login_name)]).id
 
         if not uid:
