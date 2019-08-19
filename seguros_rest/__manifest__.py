@@ -30,6 +30,7 @@
         'base_rest',
         'seguros_teste',
         'sale_management',
+        'auth_api_key'
     ],
     'data': [
         'security/ir.model.access.csv',
