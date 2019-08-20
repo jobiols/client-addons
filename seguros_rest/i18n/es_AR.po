@@ -1,0 +1,186 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* seguros_rest
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0-20190717\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-20 19:26+0000\n"
+"PO-Revision-Date: 2019-08-20 19:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_birth_date
+msgid "Birth Date"
+msgstr "Fecha de nacimiento"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_sale_order_category_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_sale_order_departure_date
+msgid "Departure Date"
+msgstr "Fecha de partida"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/services/quotation_services.py:244
+#, python-format
+msgid "Departure date (%s) is grater than return date (%s)"
+msgstr "La fecha de partida (%s) debe ser anterior a la fecha de llegada (%s)"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_document
+msgid "Document"
+msgstr "Documento"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_email
+msgid "Email"
+msgstr "Email"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/services/quotation_services.py:239
+#, python-format
+msgid "Incorrect data format found on %s (%s). Error found: %s, the format should be YYYY-MM-DD"
+msgstr "Formato de datos incorrecto encontrado en %s (%s). Error: %s, el formato debe ser YYYY-MM-DD"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/services/validate_services.py:143
+#, python-format
+msgid "Incorrect data format found on birth day of participant %s. Error found: %s, the format should be YYYY-MM-DD"
+msgstr "Formato de datos incorrecto en fecha de nacimiento del participante %s. Error: %s, el formato debe ser YYYY-MM-DD"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/models/sale_order.py:91
+#, python-format
+msgid "No products found to offer"
+msgstr "No hay productos para ofrecer"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_sale_order_participant_ids
+msgid "Participant"
+msgstr "Participante"
+
+#. module: seguros_rest
+#: model:ir.ui.view,arch_db:seguros_rest.view_order_form
+#: model:ir.ui.view,arch_db:seguros_rest.view_participant_tree
+msgid "Participants"
+msgstr "Participantes"
+
+#. module: seguros_rest
+#: model:ir.model.fields,help:seguros_rest.field_sale_order_category_id
+msgid "Product Category"
+msgstr "Categoria de producto"
+
+#. module: seguros_rest
+#: model:ir.model,name:seguros_rest.model_sale_order
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_sale_order_return_date
+msgid "Return Date"
+msgstr "Fecha de retorno"
+
+#. module: seguros_rest
+#: model:ir.model.fields,field_description:seguros_rest.field_seguros_rest_participant_sale_order_id
+msgid "Sales Order"
+msgstr "Pedido de ventas"
+
+#. module: seguros_rest
+#: model:ir.ui.view,arch_db:seguros_rest.view_order_form
+msgid "Simulate Quote"
+msgstr "Simular presupuesto"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/services/quotation_services.py:222
+#, python-format
+msgid "The category_id=%d is not found in the product.category model"
+msgstr "La category_id=%d no se encuentra en el modelo product.category"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/services/quotation_services.py:87
+#, python-format
+msgid "The lead_id with id=%d is not found in the model crm.lead"
+msgstr "El lead_id con id=%d no se encuentra en el modelo crm.lead"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/services/validate_services.py:158
+#, python-format
+msgid "There are no users to notify, please add the list of users to notify to your odoo.conf.<br> This way: <strong>users_to_notify = user1,user2,user3<strong>"
+msgstr "No hay usuarios que notificar, por favor agregue la lista de usuarios a notificar en su odoo.conf.<br> De esta forma: <strong>users_to_notify = user1,user2,user3<strong>"
+
+#. module: seguros_rest
+#: code:addons/seguros_rest/services/validate_services.py:168
+#, python-format
+msgid "There is no %s user on this system.<br> Please make sure the user login is listed in the \"users_to_notify\" option found in your odoo.conf"
+msgstr "No existe el usuario %s en el sistema.<br> Por favor asegurese de que el login del usuario esta listado en la opcion \"users_to_notify\" que debe estar en el archivo odoo.conf"
+
+#. module: seguros_rest
+#: model:ir.model,name:seguros_rest.model_seguros_rest_participant
+msgid "Travelers who are insured"
+msgstr "Viajeros que son asegurados"
+
+#. module: seguros_rest
+#: model:ir.model.fields,help:seguros_rest.field_sale_order_participant_ids
+msgid "Travellers"
+msgstr "Viajeros"
+
+#. module: seguros_rest
+#: model:ir.model.fields,help:seguros_rest.field_sale_order_return_date
+msgid "Trip end date"
+msgstr "Fecha final del viaje"
+
+#. module: seguros_rest
+#: model:ir.model.fields,help:seguros_rest.field_sale_order_departure_date
+msgid "Trip start date"
+msgstr "Fecha inicial del viaje"
+

@@ -374,7 +374,7 @@ ul.auto-toc {
 <ul class="simple">
 <li><a class="reference internal" href="#configuration" id="id1">Configuration</a></li>
 <li><a class="reference internal" href="#usage" id="id2">Usage</a><ul>
-<li><a class="reference internal" href="#cotizacion-manual" id="id3">Cotizacion Manual</a></li>
+<li><a class="reference internal" href="#manual-quotation" id="id3">Manual Quotation</a></li>
 <li><a class="reference internal" href="#api-rest" id="id4">Api REST</a></li>
 </ul>
 </li>
@@ -393,12 +393,16 @@ ul.auto-toc {
 </div>
 <div class="section" id="usage">
 <h1><a class="toc-backref" href="#id2">Usage</a></h1>
-<div class="section" id="cotizacion-manual">
-<h2><a class="toc-backref" href="#id3">Cotizacion Manual</a></h2>
+<div class="section" id="manual-quotation">
+<h2><a class="toc-backref" href="#id3">Manual Quotation</a></h2>
+<p>To make a manual quotation you must create a quotation, fill in the fields
+customer, category, departure date, arrival date, and on the participants tab
+load the passengers. After that press <strong>Simulate Quotation</strong> button</p>
+<p>Note that the <strong>Simulate Quotation</strong> button is visible only in draft state.</p>
 </div>
 <div class="section" id="api-rest">
 <h2><a class="toc-backref" href="#id4">Api REST</a></h2>
-<p>Create a new quotation:</p>
+<p><strong>Create a new quotation:</strong></p>
 <pre class="code html literal-block">
 curl -X POST \
     -H 'API_KEY: 1234567890' \
@@ -411,6 +415,37 @@ curl -X POST \
             &quot;departure_date&quot;: &quot;2019-02-01&quot;,
             &quot;return_date&quot;: &quot;2019-03-01&quot;,
             &quot;birth_dates&quot;: [&quot;1970-04-01&quot;,&quot;1958-03-12&quot;,&quot;1966-02-30&quot;]
+        }'
+</pre>
+<p><strong>Validate a quotation:</strong></p>
+<pre class="code html literal-block">
+curl -X PUT \
+    -H 'API_KEY: 1234567890' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    'http://localhost:8069/insurance/v1/validate/22' \
+    -d '{
+            &quot;product_id&quot;: 1,
+            &quot;participants&quot;: [
+                {
+                    &quot;name&quot;:&quot;Juan Carlos Birati&quot;,
+                    &quot;document&quot;:&quot;25324889&quot;,
+                    &quot;email&quot;:&quot;jcbirati&#64;gmail.com&quot;,
+                    &quot;birth_date&quot;:&quot;1970-04-01&quot;
+                },
+                {
+                    &quot;name&quot;:&quot;Analia Camano&quot;,
+                    &quot;document&quot;:&quot;52478221&quot;,
+                    &quot;email&quot;:&quot;analia.camano&#64;gmail.com&quot;,
+                    &quot;birth_date&quot;:&quot;1958-03-12&quot;
+                },
+                {
+                    &quot;name&quot;:&quot;Jose Manuel Birati&quot;,
+                    &quot;document&quot;:&quot;34875441&quot;,
+                    &quot;email&quot;:&quot;jmb234&#64;gmail.com&quot;,
+                    &quot;birth_date&quot;:&quot;1966-02-27&quot;
+                }
+            ]
         }'
 </pre>
 </div>

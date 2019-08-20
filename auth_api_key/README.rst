@@ -34,7 +34,9 @@ Configuration
 =============
 
 The api key must be provided by the configuration parameter named
-'api_key_*.key', and the user under the same option 'api_key_*.user'.
+'rest_api_key', and the user 'api_key_user' in the odoo.conf file.
+
+If not provided the default is asumed.
 
 For instance :
 
@@ -83,6 +85,7 @@ Contributors
 * Laurent Mignon <laurent.mignon@acsone.eu>
 * Quentin Groulard <quentin.groulard@acsone.eu>
 * Sébastien Beau <sebastien.beau@akretion.com>
+* Jorge Obiols <jorge.obiols@gmail.com>
 
 Maintainers
 ~~~~~~~~~~~
