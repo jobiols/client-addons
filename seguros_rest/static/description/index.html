@@ -389,7 +389,18 @@ ul.auto-toc {
 </div>
 <div class="section" id="configuration">
 <h1><a class="toc-backref" href="#id1">Configuration</a></h1>
-<p>Solo instalar el modulo</p>
+<p><strong>Install the module</strong></p>
+<p><strong>Add the key users_to_notify in odoo.conf</strong></p>
+<pre class="code html literal-block">
+users_to_notify = user1,user2,user3
+</pre>
+<p>is a list with the login names of the users that must be notified when a sales order is entered from the API</p>
+<p><strong>Add the keys rest_api_key and rest_api_user in odoo.conf</strong></p>
+<pre class="code html literal-block">
+rest_api_key = my_secret_api_key
+rest_api_user = admin
+</pre>
+<p>if these keys are not found odoo will assume the default values, i.e. rest_api_key = 1234567890 rest_api_user = admin</p>
 </div>
 <div class="section" id="usage">
 <h1><a class="toc-backref" href="#id2">Usage</a></h1>
@@ -448,6 +459,8 @@ curl -X PUT \
             ]
         }'
 </pre>
+<p>NOTE: according to the standard syntax of the POST verb the id of the object
+to be updated is embedded in the url, in this example quotation_id = 22</p>
 </div>
 </div>
 <div class="section" id="bug-tracker">

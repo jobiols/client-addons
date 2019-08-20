@@ -3,6 +3,8 @@
 from odoo import api, fields, models, _
 from datetime import datetime
 from dateutil import relativedelta
+from odoo.exceptions import Warning
+
 
 DATE_FORMAT = '%Y-%m-%d'
 
@@ -17,7 +19,8 @@ class SaleOrder(models.Model):
     )
     category_id = fields.Many2one(
         'product.category',
-        help="Product Category"
+        help="Product Category",
+        required=True
     )
     departure_date = fields.Date(
         help="Trip start date"
@@ -37,7 +40,7 @@ class SaleOrder(models.Model):
             birth_dates.append(participant.birth_date)
 
         self.select_products(birth_dates, self.departure_date,
-                             self.return_date, self.category)
+                             self.return_date, self.category_id)
 
     @staticmethod
     def get_age(birth, today):
@@ -75,7 +78,7 @@ class SaleOrder(models.Model):
         prod_tmpl = self.env['product.template']
         domain = [
             # Traer productos de esta categoria
-            ('categ_id', '=', category_id),
+            ('categ_id', '=', category_id.id),
 
             # Traer productos con destaque mayor que cero
             ('plano_destaque', '>', 0),

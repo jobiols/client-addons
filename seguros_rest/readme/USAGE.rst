@@ -61,3 +61,6 @@ Api REST
                     }
                 ]
             }'
+
+NOTE: according to the standard syntax of the POST verb the id of the object
+to be updated is embedded in the url, in this example quotation_id = 22
