@@ -40,7 +40,7 @@ class SaleOrder(models.Model):
             birth_dates.append(participant.birth_date)
 
         self.select_products(birth_dates, self.departure_date,
-                             self.return_date, self.category_id)
+                             self.return_date, self.category_id.id)
 
     @staticmethod
     def get_age(birth, today):
@@ -78,7 +78,7 @@ class SaleOrder(models.Model):
         prod_tmpl = self.env['product.template']
         domain = [
             # Traer productos de esta categoria
-            ('categ_id', '=', category_id.id),
+            ('categ_id', '=', category_id),
 
             # Traer productos con destaque mayor que cero
             ('plano_destaque', '>', 0),
