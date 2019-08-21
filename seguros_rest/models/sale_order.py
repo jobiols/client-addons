@@ -40,7 +40,7 @@ class SaleOrder(models.Model):
             birth_dates.append(participant.birth_date)
 
         self.select_products(birth_dates, self.departure_date,
-                             self.return_date, self.category_id.id)
+                             self.return_date, self.category_id)
 
     @staticmethod
     def get_age(birth, today):
@@ -78,14 +78,15 @@ class SaleOrder(models.Model):
         prod_tmpl = self.env['product.template']
         domain = [
             # Traer productos de esta categoria
-            ('categ_id', '=', category_id),
+            ('categ_id', '=', category_id.id),
 
             # Traer productos con destaque mayor que cero
             ('plano_destaque', '>', 0),
 
             # Traer productos si la edad limite del producto no es superado por
             # alguno de los participantes hasta la fecha de regreso inclusive
-            ('limte_edad', '>=', oldest_age)
+            '|', ('limte_edad', '>=', oldest_age), ('limte_edad', '=', 0)
+            #('limte_edad', '>=', oldest_age) 
         ]
 
         products = prod_tmpl.search(domain)
@@ -104,25 +105,31 @@ class SaleOrder(models.Model):
                 age = self.get_age(birth, return_date)
 
                 # determino si hay que incrementar el precio
-
+                priceAux = 0
                 # si el producto tiene incremen en false o tiene limite de edad
                 # en False no se incrementa
-                if not product.incremen or not product.limte_edad:
-                    price += product.lst_price
+                # if not product.incremen or not product.limte_edad:
+                if not product.incremen:
+                    # price += product.lst_price
+                    priceAux = product.lst_price
 
                 # si la edad del pasajero a la fecha del regreso es menor o
                 # igual a la fecha de referencia, no se incrementa
-                elif age < product.limte_edad:
-                    price += product.lst_price
+                # elif age < product.limte_edad:
+                elif age < product.ref_edad:
+                    # price += product.lst_price
+                    priceAux = product.lst_price
 
                 # no cumple las anteriores, el pasajero tiene edad mayor que
                 # la limite y tiene marcado incremento entonces se incrementa
                 else:
-                    price += product.lst_price * 1.5
+                    # price += product.lst_price * 1.5
+                    priceAux = product.lst_price * 1.5
 
                 # ya tenemos el precio por dia ahora multiplicamos por la
                 # cantidad de dias del viaje
-                price *= travel_days
+                # price *= travel_days
+                price += priceAux * travel_days
 
             vals = {
                 'order_id': self.id,
