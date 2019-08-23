@@ -89,7 +89,13 @@ class QuotationService(Component):
 
         # traducir el lead a json y crear el cliente
         vals = self._lead_to_json(lead)
-        return self.env['res.partner'].create(vals)
+        partner_id = self.env['res.partner'].create(vals)
+
+        # ponerle el cliente creado al lead
+        lead.partner_id = partner_id
+
+        # devolver el cliente
+        return partner_id
 
     # Validators
     @staticmethod
