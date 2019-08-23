@@ -110,8 +110,7 @@ class ValidateService(Component):
                 }
             },
         }
-        print('validator update', res)
-        return {}
+        return res
 
     @staticmethod
     def _validator_return_update():
@@ -127,8 +126,7 @@ class ValidateService(Component):
                 'empty': False
             }
         }
-        print('validator return update', res)
-        return {}
+        return res
 
     def _check_parameters(self, params):
         """ Chequea que las fechas de nacimiento esten escritas correctamente
