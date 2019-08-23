@@ -179,8 +179,6 @@ class QuotationService(Component):
     def _quotation_to_json(quotation):
         """ Transformar la quotation recien creada en la respuesta
         """
-        #import wdb;wdb.set_trace()
-
         res = dict()
         res['partner_id'] = quotation.partner_id.id
         res['quotation_id'] = quotation.id

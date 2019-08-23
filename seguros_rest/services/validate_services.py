@@ -27,8 +27,6 @@ class ValidateService(Component):
         Validate quotation
         """
         try:
-            import wdb;wdb.set_trace()
-
             # chequear consistencia de parametros
             self._check_parameters(params)
 
